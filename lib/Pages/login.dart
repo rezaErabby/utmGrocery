@@ -168,24 +168,31 @@ class Login extends StatelessWidget {
                       height: 30,
                     ),
                     FadeAnimation(
-                        2,
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(colors: [
-                                Color.fromRGBO(122, 207, 122, 1),
-                                Color.fromRGBO(122, 207, 122, .6),
-                              ])),
-                          child: Center(
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                      2,
+                      Container(
+                        
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(
+                            colors: [
+                              Color.fromRGBO(122, 207, 122, 1),
+                              Color.fromRGBO(122, 207, 122, .6),
+                            ],
                           ),
-                        )),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                                
+                          ),
+                        ),
+                        
+                      ),
+                    ),
                     SizedBox(
                       height: 70,
                     ),
