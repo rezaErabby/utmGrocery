@@ -95,20 +95,19 @@ class Register extends StatelessWidget {
                     ),
                     Positioned(
                       child: FadeAnimation(
-                        1.6,
-                        Container(
-                          margin: EdgeInsets.only(top: 50),
-                          child: Center(
-                            child: Text(
-                              "Register",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold),
+                          1.6,
+                          Container(
+                            margin: EdgeInsets.only(top: 50),
+                            child: Center(
+                              child: Text(
+                                "Register",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
+                          )),
                     )
                   ],
                 ),
@@ -121,17 +120,38 @@ class Register extends StatelessWidget {
                         1.8,
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Color.fromRGBO(143, 148, 251, .2),
-                                    blurRadius: 20.0,
-                                    offset: Offset(0, 10))
-                              ]),
+                          // decoration: BoxDecoration(
+                          //   color: Colors.white,
+                          //   borderRadius: BorderRadius.circular(10),
+                          //   boxShadow: [
+                          //     BoxShadow(
+                          //       color: Color.fromRGBO(143, 148, 251, .2),
+                          //       blurRadius: 20.0,
+                          //       offset: Offset(0, 10)
+                          //     )
+                          //   ]
+                          // ),
+
                           child: Column(
                             children: <Widget>[
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                child: Row(children: <Widget>[
+                                  SizedBox(
+                                    width: 120,
+                                  ),
+                                  Icon(
+                                    Icons.add_a_photo,
+                                    size: 100,
+                                    color: Color.fromRGBO(122, 207, 122, 1),
+                                  ),
+                                ]),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
                               Container(
                                 padding: EdgeInsets.all(8.0),
                                 decoration: BoxDecoration(
@@ -141,13 +161,73 @@ class Register extends StatelessWidget {
                                 child: TextField(
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
-                                      hintText: "Email or Phone number",
+                                      hintText: "Name",
                                       hintStyle:
                                           TextStyle(color: Colors.grey[400])),
                                 ),
                               ),
                               Container(
                                 padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Email",
+                                      hintStyle:
+                                          TextStyle(color: Colors.grey[400])),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Phone Number",
+                                      hintStyle:
+                                          TextStyle(color: Colors.grey[400])),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Address",
+                                      hintStyle:
+                                          TextStyle(color: Colors.grey[400])),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      hintText: "Username",
+                                      hintStyle:
+                                          TextStyle(color: Colors.grey[400])),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
                                 child: TextField(
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
@@ -163,37 +243,57 @@ class Register extends StatelessWidget {
                       height: 30,
                     ),
                     FadeAnimation(
-                        2,
-                        Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(colors: [
-                                Color.fromRGBO(143, 148, 251, 1),
-                                Color.fromRGBO(143, 148, 251, .6),
-                              ])),
-                          child: Center(
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                      2,
+                      Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(colors: [
+                              Color.fromRGBO(122, 207, 122, 1),
+                              Color.fromRGBO(122, 207, 122, .6),
+                            ])),
+                        child: Center(
+                          child: Text(
+                            "Register",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
                     SizedBox(
-                      height: 70,
+                      height: 50,
                     ),
                     FadeAnimation(
-                        1.5,
-                        Text(
-                          "Forgot Password?",
-                          style: TextStyle(
-                              color: Color.fromRGBO(143, 148, 251, 1)),
-                        )),
+                      1.5,
+                      Container(
+                        child: Center(
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(
+                                width: 60,
+                              ),
+                              Text(
+                                "Already have an account ? ",
+                                style: TextStyle(
+                                    color: Color.fromRGBO(122, 207, 122, 1)),
+                              ),
+                              FlatButton.icon(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/login');
+                                },
+                                icon: Icon(Icons.forward),
+                                label: Text('Login'),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              ) 
+              )
             ],
           ),
         ),
