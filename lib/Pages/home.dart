@@ -24,33 +24,35 @@ class NavDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            child: Text(
-              "UTM Grocery",
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-            decoration: BoxDecoration(
-              color: Colors.green,
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage('assets/images/logo.jpg'),
+          SafeArea(
+            child: DrawerHeader(
+              child: Text(
+                "UTM Grocery",
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.green,
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage('assets/images/logo.png'),
+                ),
               ),
             ),
           ),
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text("Profile"),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => Navigator.pushNamed(context, '/profile'),
           ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => Navigator.pushNamed(context, '/settings'),
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => Navigator.pushNamed(context, '/login'),
           ),
         ],
       ),
