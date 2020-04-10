@@ -9,7 +9,7 @@ class Splash extends StatelessWidget {
           children: <Widget>[
             FlatButton.icon(
               onPressed: () {
-                Navigator.pushNamed(context, '/register');
+                Navigator.pushNamed(context, '/home');
               },
               icon: Icon(Icons.forward),
               label: Text('Login'),

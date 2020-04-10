@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utmgrocery/Pages/home.dart';
 import 'package:utmgrocery/Pages/profile.dart';
 import 'package:utmgrocery/Pages/register.dart';
 import 'package:utmgrocery/Pages/splash.dart';
@@ -9,6 +10,7 @@ void main() => runApp(MaterialApp(
       initialRoute: '/',
       routes: {
         '/': (context) => Splash(),
+        'home': (context) => Home(),
         '/login': (context) => Login(),
         '/register': (context) => Register(),
         '/profile': (context) => Profile(),
