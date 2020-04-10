@@ -23,13 +23,28 @@ class Login extends StatelessWidget {
                     Positioned(
                       left: 30,
                       width: 80,
-                      height: 200,
+                      height: 260,
                       child: FadeAnimation(
                         1,
                         Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('assets/images/light-1.png'),
+                              image: AssetImage('assets/images/fruit.png'),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 30,
+                      width: 80,
+                      height: 500,
+                      child: FadeAnimation(
+                        1,
+                        Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/cum.png'),
                             ),
                           ),
                         ),
@@ -38,14 +53,28 @@ class Login extends StatelessWidget {
                     Positioned(
                       left: 140,
                       width: 80,
-                      height: 150,
+                      height: 200,
                       child: FadeAnimation(
                         1.3,
                         Container(
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image:
-                                      AssetImage('assets/images/light-2.png'))),
+                                      AssetImage('assets/images/mango.png'))),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 190,
+                      width: 80,
+                      height: 350,
+                      child: FadeAnimation(
+                        1.3,
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/busket.png'))),
                         ),
                       ),
                     ),
@@ -60,7 +89,7 @@ class Login extends StatelessWidget {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image:
-                                      AssetImage('assets/images/clock.png'))),
+                                      AssetImage('assets/images/mixveg.png'))),
                         ),
                       ),
                     ),
@@ -71,7 +100,7 @@ class Login extends StatelessWidget {
                             margin: EdgeInsets.only(top: 50),
                             child: Center(
                               child: Text(
-                                "Login",
+                                "Register",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 40,
