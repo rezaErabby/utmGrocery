@@ -5,6 +5,7 @@ import 'package:utmgrocery/Pages/splash.dart';
 import 'package:utmgrocery/Pages/login.dart';
 
 void main() => runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         '/': (context) => Splash(),
