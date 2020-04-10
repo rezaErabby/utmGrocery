@@ -33,7 +33,7 @@ class NavDrawer extends StatelessWidget {
               color: Colors.green,
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: AssetImage('assets/images/logo.JPG'),
+                image: AssetImage('assets/images/logo.jpg'),
               ),
             ),
           ),
