@@ -1,11 +1,44 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:flare_splash_screen/flare_splash_screen.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
+  @override
+  _SplashState createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+   @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 8), () {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ));
+    });
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Container(
       
+    );
+  }
+}
+ @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FlareActor("assets/images/splash.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:"splash"),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text("Home Page"),
+      ),
     );
   }
 }
