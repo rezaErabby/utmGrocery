@@ -102,9 +102,11 @@ class Register extends StatelessWidget {
                               child: Text(
                                 "Register",
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold),
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Amatic SC',
+                                ),
                               ),
                             ),
                           )),

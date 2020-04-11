@@ -102,9 +102,11 @@ class Login extends StatelessWidget {
                             child: Text(
                               "Login",
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold),
+                                color: Colors.white,
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Amatic SC',
+                              ),
                             ),
                           ),
                         ),
@@ -121,17 +123,6 @@ class Login extends StatelessWidget {
                         1.8,
                         Container(
                           padding: EdgeInsets.all(5),
-                          // decoration: BoxDecoration(
-                          //   color: Colors.white,
-                          //   borderRadius: BorderRadius.circular(10),
-                          //   boxShadow: [
-                          //     BoxShadow(
-                          //       color: Color.fromRGBO(143, 148, 251, .2),
-                          //       blurRadius: 20.0,
-                          //       offset: Offset(0, 10)
-                          //     )
-                          //   ]
-                          // ),
                           child: Column(
                             children: <Widget>[
                               Container(
