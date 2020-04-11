@@ -22,10 +22,10 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FlareActor("assets/images/splash.flr",
+      body: FlareActor("assets/splash.flr",
           alignment: Alignment.center,
           fit: BoxFit.contain,
-          animation: "New File 1"),
+          animation: "splash"),
     );
   }
 }
