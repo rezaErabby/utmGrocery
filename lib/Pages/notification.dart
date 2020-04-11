@@ -15,13 +15,13 @@ class Notifications extends StatelessWidget {
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: <
                     Widget>[
               Card(
-                  color: Colors.white,
+                  color: Colors.red[100],
                   margin:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
                   child: ListTile(
                     leading: Icon(
-                      Icons.message,
-                      color: Colors.teal[900],
+                      Icons.notification_important,
+                      color: Colors.red[900],
                     ),
                     title: Text(
                       'Reza',
@@ -29,13 +29,13 @@ class Notifications extends StatelessWidget {
                     ),
                   )),
               Card(
-                  color: Colors.white,
+                  color: Colors.red[100],
                   margin:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
                   child: ListTile(
                     leading: Icon(
-                      Icons.message,
-                      color: Colors.teal[900],
+                      Icons.notification_important,
+                      color: Colors.red[900],
                     ),
                     title: Text(
                       'Sakib',
@@ -43,13 +43,13 @@ class Notifications extends StatelessWidget {
                     ),
                   )),
               Card(
-                  color: Colors.white,
+                  color: Colors.red[100],
                   margin:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 25.0),
                   child: ListTile(
                     leading: Icon(
-                      Icons.message,
-                      color: Colors.teal[900],
+                      Icons.notification_important,
+                      color: Colors.red[900],
                     ),
                     title: Text(
                       'Akib',
