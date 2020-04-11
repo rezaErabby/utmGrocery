@@ -65,7 +65,9 @@ class Profile extends StatelessWidget {
                     child: Container(
                         child: Center(
                             child: FlatButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/notification');
+                      },
                       icon: Icon(
                         Icons.notifications,
                         color: Colors.orange[200],
