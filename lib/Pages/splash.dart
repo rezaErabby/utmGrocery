@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> {
       body: FlareActor("assets/splash.flr",
           alignment: Alignment.center,
           fit: BoxFit.contain,
-          animation: "splash"),
+          animation: "New File 1"),
     );
   }
 }
