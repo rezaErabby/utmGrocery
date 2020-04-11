@@ -4,9 +4,74 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Center(
-          child: Text("Profile Page"),
+      appBar: AppBar(
+        title: Text('Profile'),
+        centerTitle: true,
+        backgroundColor: Color.fromRGBO(122, 207, 122, 1),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(children: <Widget>[
+            Container(
+              height: 320,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Color.fromRGBO(122, 207, 122, 1),
+                  Color.fromRGBO(122, 207, 122, .6),
+                ]),
+              ),
+              child: Stack(children: <Widget>[
+                Positioned(
+                  left: 140,
+                  top: 40,
+                  child: Container(
+                    width: 130.0,
+                    height: 130.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/mark.jfif'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(80.0),
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 10.0,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 30,
+                  left: 85,
+                  child: Container(
+                    margin: EdgeInsets.only(top: 170),
+                    child: Center(
+                      child: Text(
+                        "Mark Zukerburg",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                    top: 250,
+                    left: 130,
+                    child: Container(
+                        child: Center(
+                            child: FlatButton.icon(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.notifications,
+                        color: Colors.orange[200],
+                      ),
+                      label: Text('Notifications'),
+                    )))),
+              ]),
+            ),
+          ]),
         ),
       ),
     );

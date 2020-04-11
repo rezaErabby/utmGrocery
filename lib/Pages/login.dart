@@ -182,11 +182,17 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         child: Center(
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
+                          child: FlatButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/home');
+                            },
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ),
