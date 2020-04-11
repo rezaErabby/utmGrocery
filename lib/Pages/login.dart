@@ -95,19 +95,20 @@ class Login extends StatelessWidget {
                     ),
                     Positioned(
                       child: FadeAnimation(
-                          1.6,
-                          Container(
-                            margin: EdgeInsets.only(top: 50),
-                            child: Center(
-                              child: Text(
-                                "Login",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                        1.6,
+                        Container(
+                          margin: EdgeInsets.only(top: 50),
+                          child: Center(
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold),
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -170,7 +171,6 @@ class Login extends StatelessWidget {
                     FadeAnimation(
                       2,
                       Container(
-                        
                         height: 50,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -187,10 +187,8 @@ class Login extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
-                                
                           ),
                         ),
-                        
                       ),
                     ),
                     SizedBox(

@@ -24,9 +24,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FlareActor("assets/New File 1.flr",
-          alignment: Alignment.center,
-          fit: BoxFit.contain,
-          animation: "New File 1"),
+          alignment: Alignment.center, fit: BoxFit.contain, animation: "intro"),
       backgroundColor: Colors.green[300],
     );
   }
@@ -48,6 +46,29 @@ class HomePage extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
               ),
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    child: FadeAnimation(
+                      1.6,
+                      Container(
+                        margin: EdgeInsets.only(top: 0),
+                        child: Center(
+                          child: Text(
+                            "UTM Grocery",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
             FadeAnimation(
               1.8,
@@ -67,7 +88,7 @@ class HomePage extends StatelessWidget {
                           "Login",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18.0
+                            fontSize: 22.0,
                           ),
                         ),
                         color: Color.fromRGBO(122, 207, 122, .9),
@@ -83,7 +104,11 @@ class HomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(context, '/register');
                         },
-                        child: Text("Register"),
+                        child: Text("Register",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22.0,
+                            )),
                         color: Color.fromRGBO(122, 207, 122, .9),
                       ),
                     )
