@@ -36,6 +36,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -52,22 +53,39 @@ class HomePage extends StatelessWidget {
               1.8,
               Padding(
                 padding: const EdgeInsets.only(top: 100.0),
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/login');
-                      },
-                      child: Text("Login"),
-                      color: Colors.green[200],
+                    SizedBox(
+                      width: 200.0,
+                      height: 50.0,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/login');
+                        },
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0
+                          ),
+                        ),
+                        color: Color.fromRGBO(122, 207, 122, .9),
+                      ),
                     ),
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/register');
-                      },
-                      child: Text("Register"),
-                      color: Colors.green[200],
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    SizedBox(
+                      width: 200.0,
+                      height: 50.0,
+                      child: FlatButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/register');
+                        },
+                        child: Text("Register"),
+                        color: Color.fromRGBO(122, 207, 122, .9),
+                      ),
                     )
                   ],
                 ),
