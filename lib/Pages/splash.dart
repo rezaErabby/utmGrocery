@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flare_splash_screen/flare_splash_screen.dart';
 
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            FlatButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/home');
-              },
-              icon: Icon(Icons.forward),
-              label: Text('Login'),
-            )
-          ],
-        ),
-      ),
+    return MaterialApp(
+      
     );
   }
 }
