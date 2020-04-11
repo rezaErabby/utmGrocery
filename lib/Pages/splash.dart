@@ -7,27 +7,25 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-   @override
+  @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 8), () {
+    Future.delayed(Duration(seconds: 4), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => HomePage(),
           ));
     });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
-    );
-  }
-}
- @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      body: FlareActor("assets/images/splash.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:"splash"),
+      body: FlareActor("assets/images/splash.flr",
+          alignment: Alignment.center,
+          fit: BoxFit.contain,
+          animation: "New File 1"),
     );
   }
 }
