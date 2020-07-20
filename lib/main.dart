@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
-import 'package:utmgrocery/Pages/home.dart';
-import 'package:utmgrocery/Pages/profile.dart';
-import 'package:utmgrocery/Pages/register.dart';
-import 'package:utmgrocery/Pages/settings.dart';
-import 'package:utmgrocery/Pages/splash.dart';
-import 'package:utmgrocery/Pages/login.dart';
-import 'package:utmgrocery/Pages/notification.dart';
+import 'package:utmgrocery/views/home.dart';
+import 'package:utmgrocery/views/profile.dart';
+import 'package:utmgrocery/views/register.dart';
+import 'package:utmgrocery/views/settings.dart';
+import 'package:utmgrocery/views/splash.dart';
+import 'package:utmgrocery/views/login.dart';
+import 'package:utmgrocery/views/notification.dart';
 
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -17,7 +16,7 @@ void main() => runApp(MaterialApp(
         '/login': (context) => Login(),
         '/register': (context) => Register(),
         '/profile': (context) => Profile(),
-        '/settings':(context) => Settings(),
-        '/notification':(context) => Notifications(),
+        '/settings': (context) => Settings(),
+        '/notification': (context) => Notifications(),
       },
     ));
