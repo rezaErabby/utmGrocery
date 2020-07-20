@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utmgrocery/Pages/Animation/FadeAnimation.dart';
+import 'package:utmgrocery/views/Animation/FadeAnimation.dart';
 
 class Register extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:utmgrocery/Pages/Animation/FadeAnimation.dart';
+import 'package:utmgrocery/views/Animation/FadeAnimation.dart';
 
 class Splash extends StatefulWidget {
   @override
