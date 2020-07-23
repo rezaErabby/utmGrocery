@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "470312295240",
+    "firebase_url": "https://utmgrocery.firebaseio.com",
+    "project_id": "utmgrocery",
+    "storage_bucket": "utmgrocery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470312295240:android:0793f2875d2a900f56317d",
+        "android_client_info": {
+          "package_name": "com.example.utmgrocery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "470312295240-ma93bmhff2nqjuuu604k768gcb845i9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9I4iCENyIV4p14iz1d0oYP-_54PZKUvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "470312295240-ma93bmhff2nqjuuu604k768gcb845i9v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

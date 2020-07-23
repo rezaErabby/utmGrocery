@@ -12,7 +12,6 @@ void main() => runApp(MaterialApp(
       initialRoute: '/',
       routes: {
         '/': (context) => Splash(),
-        '/home': (context) => Home(),
         '/login': (context) => Login(),
         '/register': (context) => Register(),
         '/profile': (context) => Profile(),
