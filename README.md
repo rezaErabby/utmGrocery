@@ -16,10 +16,15 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 # Project Name : UTMGrocery
-# Members : 
+
+# Members :
+
 # Reza-E-Rabby A17CS4032
+
 # Syed Muhammad Yamin Gharbi A17CS5066
+
 # Akibul Hasan A17CS4015
+
 # Nazmus Sakib A17CS0265
 
-# video link https://youtu.be/HGUy5w2or4g
+# video link https://youtu.be/892eMvB8q0M
