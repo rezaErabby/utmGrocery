@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:utmgrocery/services/auth.dart';
 import 'package:utmgrocery/views/Animation/FadeAnimation.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:utmgrocery/views/home.dart';
 
 class Login extends StatefulWidget {
+  final Function toggleView;
+  Login({this.toggleView});
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _email, _password;
+  //final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // String _email, _password;
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+  String error = "";
+
+  String email = "";
+  String password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -149,10 +156,14 @@ class _LoginState extends State<Login> {
                                         return 'Provide an email';
                                       }
                                     },
-                                    onSaved: (input) => _email = input,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        email = val;
+                                      });
+                                    },
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
-                                        hintText: "Email or Phone number",
+                                        hintText: "Email",
                                         hintStyle:
                                             TextStyle(color: Colors.grey[400])),
                                   ),
@@ -174,7 +185,11 @@ class _LoginState extends State<Login> {
                                         hintText: "Password",
                                         hintStyle:
                                             TextStyle(color: Colors.grey[400])),
-                                    onSaved: (input) => _password = input,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        password = val;
+                                      });
+                                    },
                                     obscureText: true,
                                   ),
                                 )
@@ -199,9 +214,19 @@ class _LoginState extends State<Login> {
                           ),
                           child: Center(
                             child: FlatButton(
-                              onPressed: signIn,
-                              // Navigator.pushNamed(context, '/home');
-
+                              onPressed: () async {
+                                if (_formKey.currentState.validate()) {
+                                  dynamic result =
+                                      await _auth.signInWithEmailAndPassword(
+                                          email, password);
+                                  Navigator.pushNamed(context, '/home');
+                                  if (result == null) {
+                                    setState(() {
+                                      error = 'Could not Login';
+                                    });
+                                  }
+                                }
+                              },
                               child: Text(
                                 "Login",
                                 style: TextStyle(
@@ -262,21 +287,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-  }
-
-  void signIn() async {
-    if (_formKey.currentState.validate()) {
-      _formKey.currentState.save();
-      try {
-        FirebaseUser user = (await FirebaseAuth.instance
-                .signInWithEmailAndPassword(
-                    email: _email.trim(), password: _password))
-            .user;
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Home(user: user)));
-      } catch (e) {
-        print(e.message);
-      }
-    }
   }
 }

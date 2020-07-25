@@ -1,210 +1,330 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  @override
+  MapScreenState createState() => MapScreenState();
+}
+
+class MapScreenState extends State<Profile>
+    with SingleTickerProviderStateMixin {
+  bool _status = true;
+  final FocusNode myFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-        centerTitle: true,
-        backgroundColor: Color.fromRGBO(122, 207, 122, 1),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(children: <Widget>[
-            Container(
-              height: 320,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Color.fromRGBO(122, 207, 122, 1),
-                  Color.fromRGBO(122, 207, 122, .6),
-                ]),
-              ),
-              child: Stack(children: <Widget>[
-                Positioned(
-                  left: 140,
-                  top: 40,
-                  child: Container(
-                    width: 130.0,
-                    height: 130.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/mark.jfif'),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: BorderRadius.circular(80.0),
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 10.0,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 30,
-                  left: 85,
-                  child: Container(
-                    margin: EdgeInsets.only(top: 170),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 23.0),
-                        child: Text(
-                          "Mark Zukerburg",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                    top: 250,
-                    left: 135,
-                    child: Container(
-                        child: Center(
-                            child: FlatButton.icon(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/notification');
-                      },
-                      icon: Icon(
-                        Icons.notifications,
-                        color: Colors.orange[200],
-                      ),
-                      label: Text('Notifications'),
-                    )))),
-              ]),
-            ),
-            SafeArea(
-                child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+    return new Scaffold(
+        appBar: AppBar(
+          title: Text('Profile'),
+          centerTitle: true,
+          backgroundColor: Color.fromRGBO(122, 207, 122, 1),
+        ),
+        body: new Container(
+          color: Colors.white,
+          child: new ListView(
+            children: <Widget>[
+              Column(
                 children: <Widget>[
-                  Card(
-                      elevation: 1.0,
-                      margin: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 8.0),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: ListTile(
-                        leading: Icon(
-                          Icons.person,
-                          color: Colors.black,
-                        ),
-                        title: Text(
-                          'Name',
-                        ),
-                      )),
-                  Card(
-                    elevation: 1.0,
-                    margin: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 8.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.email,
-                        color: Colors.black,
-                      ),
-                      title: Text(
-                        'Email',
+                  
+                  new Container(
+                    color: Color(0xffFFFFFF),
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 25.0),
+                      child: new Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Parsonal Information',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      _status
+                                          ? _getEditIcon()
+                                          : new Container(),
+                                    ],
+                                  )
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Name',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                        hintText: "Enter Your Name",
+                                      ),
+                                      enabled: !_status,
+                                      autofocus: !_status,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Address',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                          hintText: "Enter Your Address"),
+                                      enabled: !_status,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      new Text(
+                                        'Mobile',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: <Widget>[
+                                  new Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                          hintText: "Enter Mobile Number"),
+                                      enabled: !_status,
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 25.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Container(
+                                      child: new Text(
+                                        'Pin Code',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    flex: 2,
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      child: new Text(
+                                        'State',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    flex: 2,
+                                  ),
+                                ],
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0, right: 25.0, top: 2.0),
+                              child: new Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(right: 10.0),
+                                      child: new TextField(
+                                        decoration: const InputDecoration(
+                                            hintText: "Enter Pin Code"),
+                                        enabled: !_status,
+                                      ),
+                                    ),
+                                    flex: 2,
+                                  ),
+                                  Flexible(
+                                    child: new TextField(
+                                      decoration: const InputDecoration(
+                                          hintText: "Enter State"),
+                                      enabled: !_status,
+                                    ),
+                                    flex: 2,
+                                  ),
+                                ],
+                              )),
+                          !_status ? _getActionButtons() : new Container(),
+                        ],
                       ),
                     ),
-                  ),
-                  Card(
-                    elevation: 1.0,
-                    margin: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 8.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.supervised_user_circle,
-                        color: Colors.black,
-                      ),
-                      title: Text(
-                        'Username',
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 1.0,
-                    margin: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 8.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.home,
-                        color: Colors.black,
-                      ),
-                      title: Text(
-                        'Address',
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 1.0,
-                    margin: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 8.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.phone,
-                        color: Colors.black,
-                      ),
-                      title: Text(
-                        'Phone Number',
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 1.0,
-                    margin: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 8.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.shopping_cart,
-                        color: Colors.black,
-                      ),
-                      title: Text(
-                        'My Orders',
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 1.0,
-                    margin: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 8.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.shopping_basket,
-                        color: Colors.black,
-                      ),
-                      title: Text(
-                        'My Delivery',
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 1.0,
-                    margin: const EdgeInsets.fromLTRB(8.0, 5.0, 8.0, 8.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0)),
-                    child: ListTile(
-                      leading: Icon(Icons.location_on, color: Colors.black),
-                      title: Text("My Location"),
-                      trailing: Switch(
-                          activeColor: Colors.green,
-                          value: true,
-                          onChanged: (val) {}),
-                    ),
-                  ),
+                  )
                 ],
               ),
-            )),
-          ]),
+            ],
+          ),
+        ));
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    myFocusNode.dispose();
+    super.dispose();
+  }
+
+  Widget _getActionButtons() {
+    return Padding(
+      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 45.0),
+      child: new Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(right: 10.0),
+              child: Container(
+                  child: new RaisedButton(
+                child: new Text("Save"),
+                textColor: Colors.white,
+                color: Colors.green,
+                onPressed: () {
+                  setState(() {
+                    _status = true;
+                    FocusScope.of(context).requestFocus(new FocusNode());
+                  });
+                },
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0)),
+              )),
+            ),
+            flex: 2,
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: Container(
+                  child: new RaisedButton(
+                child: new Text("Cancel"),
+                textColor: Colors.white,
+                color: Colors.red,
+                onPressed: () {
+                  setState(() {
+                    _status = true;
+                    FocusScope.of(context).requestFocus(new FocusNode());
+                  });
+                },
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0)),
+              )),
+            ),
+            flex: 2,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _getEditIcon() {
+    return new GestureDetector(
+      child: new CircleAvatar(
+        backgroundColor: Colors.red,
+        radius: 14.0,
+        child: new Icon(
+          Icons.edit,
+          color: Colors.white,
+          size: 16.0,
         ),
       ),
+      onTap: () {
+        setState(() {
+          _status = false;
+        });
+      },
     );
   }
 }

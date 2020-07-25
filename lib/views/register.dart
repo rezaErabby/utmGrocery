@@ -1,16 +1,26 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:utmgrocery/services/auth.dart';
+
 import 'package:utmgrocery/views/Animation/FadeAnimation.dart';
-import 'package:utmgrocery/views/login.dart';
 
 class Register extends StatefulWidget {
+  final Function toggleView;
+  Register({this.toggleView});
   @override
   _RegisterState createState() => _RegisterState();
 }
 
 class _RegisterState extends State<Register> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String _name, _email, _address, _phone, _username, _password;
+  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // String _name, _email, _address, _phone, _username, _password;
+
+  final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
+  String error = "";
+
+  String email = "";
+  String password = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -144,93 +154,17 @@ class _RegisterState extends State<Register> {
                                   child: TextFormField(
                                     validator: (input) {
                                       if (input.isEmpty) {
-                                        return 'Provide a Name';
-                                      }
-                                    },
-                                    onSaved: (input) => _name = input,
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Name",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[100]))),
-                                  child: TextFormField(
-                                    validator: (input) {
-                                      if (input.isEmpty) {
                                         return 'Provide an email';
                                       }
                                     },
-                                    onSaved: (input) => _email = input,
+                                    onChanged: (input) {
+                                      setState(() {
+                                        email = input;
+                                      });
+                                    },
                                     decoration: InputDecoration(
                                         border: InputBorder.none,
                                         hintText: "Email",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[100]))),
-                                  child: TextFormField(
-                                    validator: (input) {
-                                      if (input.isEmpty) {
-                                        return 'Provide a phone no.';
-                                      }
-                                    },
-                                    onSaved: (input) => _phone = input,
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Phone Number",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[100]))),
-                                  child: TextFormField(
-                                    validator: (input) {
-                                      if (input.isEmpty) {
-                                        return 'Provide address';
-                                      }
-                                    },
-                                    onSaved: (input) => _address = input,
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Address",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[400])),
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(8.0),
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Colors.grey[100]))),
-                                  child: TextFormField(
-                                    validator: (input) {
-                                      if (input.isEmpty) {
-                                        return 'Provide a username';
-                                      }
-                                    },
-                                    onSaved: (input) => _username = input,
-                                    decoration: InputDecoration(
-                                        border: InputBorder.none,
-                                        hintText: "Username",
                                         hintStyle:
                                             TextStyle(color: Colors.grey[400])),
                                   ),
@@ -252,7 +186,11 @@ class _RegisterState extends State<Register> {
                                         hintText: "Password",
                                         hintStyle:
                                             TextStyle(color: Colors.grey[400])),
-                                    onSaved: (input) => _password = input,
+                                    onChanged: (input) {
+                                      setState(() {
+                                        password = input;
+                                      });
+                                    },
                                     obscureText: true,
                                   ),
                                 )
@@ -274,7 +212,19 @@ class _RegisterState extends State<Register> {
                               ])),
                           child: Center(
                             child: FlatButton(
-                              onPressed: signUp,
+                              onPressed: () async {
+                                if (_formKey.currentState.validate()) {
+                                  dynamic result =
+                                      await _auth.registerWithEmailAndPassword(
+                                          email, password);
+                                  Navigator.pushNamed(context, '/login');
+                                  if (result == null) {
+                                    setState(() {
+                                      error = "Please provide a valid Email";
+                                    });
+                                  }
+                                }
+                              },
                               child: Text(
                                 "Register",
                                 style: TextStyle(
@@ -323,23 +273,5 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
-  }
-
-  void signUp() async {
-    if (_formKey.currentState.validate()) {
-      _formKey.currentState.save();
-      try {
-        FirebaseUser user = (await FirebaseAuth.instance
-                .createUserWithEmailAndPassword(
-                    email: _email.trim(), password: _password))
-            .user;
-        user.sendEmailVerification();
-        Navigator.of(context).pop();
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Login()));
-      } catch (e) {
-        print(e.message);
-      }
-    }
   }
 }
