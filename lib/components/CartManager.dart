@@ -97,6 +97,9 @@ class _CartManager extends State<CartManager> {
                         if (_cartBloc.currentCart.isEmpty)
                           Scaffold.of(context).showSnackBar(
                               SnackBar(content: Text("Cart is empty")));
+                              else{
+                                Navigator.pushNamed(context, '/payment');
+                              }
                       },
                       child: new Text("Next",
                           style: TextStyle(

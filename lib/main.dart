@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:utmgrocery/models/User.dart';
 import 'package:utmgrocery/services/auth.dart';
 import 'package:utmgrocery/views/home.dart';
+import 'package:utmgrocery/views/paymentdone.dart';
 
 import 'package:utmgrocery/views/profile.dart';
 import 'package:utmgrocery/views/register.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           '/settings': (context) => Settings(),
           '/notification': (context) => Notifications(),
           '/home': (context) => Home(),
+          '/payment': (context) => Payment(),
         },
       ),
     );

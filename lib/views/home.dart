@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:utmgrocery/bloc/CartBloc.dart';
 import 'package:utmgrocery/components/CartManager.dart';
 import 'package:utmgrocery/components/GridShop.dart';
+import 'package:utmgrocery/services/auth.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool _showCart = false;
   CartBloc _cartBloc;
-
+  final AuthService _auth = AuthService();
   ScrollController _scrollController = new ScrollController();
 
   @override
@@ -62,7 +63,10 @@ class _HomeState extends State<Home> {
               ListTile(
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Logout'),
-                onTap: () => Navigator.pushNamed(context, '/login'),
+                onTap: () async {
+                  await _auth.signOut();
+                  Navigator.pushNamed(context, '/login');
+                },
               ),
             ],
           ),
