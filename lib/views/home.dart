@@ -24,86 +24,89 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.green[200],
-        appBar: AppBar(
-          title: Text('UTM Grocery'),
-          centerTitle: true,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
           backgroundColor: Colors.green[200],
-        ),
-        drawer: new Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              SafeArea(
-                child: DrawerHeader(
-                  child: Text(
-                    "UTM Grocery",
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('assets/images/logo.png'),
+          appBar: AppBar(
+            title: Text('UTM Grocery'),
+            centerTitle: true,
+            backgroundColor: Colors.green[200],
+          ),
+          drawer: new Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                SafeArea(
+                  child: DrawerHeader(
+                    child: Text(
+                      "UTM Grocery",
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/images/logo.png'),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              ListTile(
-                leading: Icon(Icons.verified_user),
-                title: Text("Profile"),
-                onTap: () => Navigator.pushNamed(context, '/profile'),
-              ),
-              ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Settings'),
-                onTap: () => Navigator.pushNamed(context, '/settings'),
-              ),
-              ListTile(
-                leading: Icon(Icons.exit_to_app),
-                title: Text('Logout'),
-                onTap: () async {
-                  await _auth.signOut();
-                  Navigator.pushNamed(context, '/login');
-                },
-              ),
-            ],
+                ListTile(
+                  leading: Icon(Icons.verified_user),
+                  title: Text("Profile"),
+                  onTap: () => Navigator.pushNamed(context, '/profile'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Settings'),
+                  onTap: () => Navigator.pushNamed(context, '/settings'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('Logout'),
+                  onTap: () async {
+                    await _auth.signOut();
+                    Navigator.pushNamed(context, '/login');
+                  },
+                ),
+              ],
+            ),
           ),
-        ),
-        body: new Stack(children: <Widget>[
-          new CustomScrollView(
-              physics: NeverScrollableScrollPhysics(),
-              controller: _scrollController,
-              slivers: <Widget>[
-                new SliverToBoxAdapter(child: new GridShop()),
-                new SliverToBoxAdapter(child: new CartManager()),
-              ]),
-          new Align(
-              alignment: Alignment.bottomRight,
-              child: new Container(
-                  margin: EdgeInsets.only(right: 10, bottom: 10),
-                  child: new FloatingActionButton(
-                      onPressed: () {
-                        if (_showCart)
-                          _scrollController.animateTo(
-                              _scrollController.position.minScrollExtent,
-                              curve: Curves.fastOutSlowIn,
-                              duration: Duration(seconds: 2));
-                        else
-                          _scrollController.animateTo(
-                              _scrollController.position.maxScrollExtent,
-                              curve: Curves.fastOutSlowIn,
-                              duration: Duration(seconds: 2));
+          body: new Stack(children: <Widget>[
+            new CustomScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                controller: _scrollController,
+                slivers: <Widget>[
+                  new SliverToBoxAdapter(child: new GridShop()),
+                  new SliverToBoxAdapter(child: new CartManager()),
+                ]),
+            new Align(
+                alignment: Alignment.bottomRight,
+                child: new Container(
+                    margin: EdgeInsets.only(right: 10, bottom: 10),
+                    child: new FloatingActionButton(
+                        onPressed: () {
+                          if (_showCart)
+                            _scrollController.animateTo(
+                                _scrollController.position.minScrollExtent,
+                                curve: Curves.fastOutSlowIn,
+                                duration: Duration(seconds: 2));
+                          else
+                            _scrollController.animateTo(
+                                _scrollController.position.maxScrollExtent,
+                                curve: Curves.fastOutSlowIn,
+                                duration: Duration(seconds: 2));
 
-                        setState(() {
-                          _showCart = !_showCart;
-                        });
-                      },
-                      backgroundColor: Colors.green[300],
-                      child: new Icon(
-                          _showCart ? Icons.close : Icons.shopping_cart))))
-        ]));
+                          setState(() {
+                            _showCart = !_showCart;
+                          });
+                        },
+                        backgroundColor: Colors.green[300],
+                        child: new Icon(
+                            _showCart ? Icons.close : Icons.shopping_cart))))
+          ])),
+    );
   }
 
   @override
